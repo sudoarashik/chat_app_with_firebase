@@ -1,4 +1,4 @@
-import 'package:chat_app_with_firebase/Auth/auth_service.dart';
+import 'package:chat_app_with_firebase/services/Auth/auth_service.dart';
 import 'package:chat_app_with_firebase/components/my_button.dart';
 import 'package:flutter/material.dart';
 import '../components/my_textfield.dart';
