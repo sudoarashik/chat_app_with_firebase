@@ -6,7 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
   final String receiverEmail;
   final String receiverID;
 
@@ -16,11 +16,17 @@ class ChatPage extends StatelessWidget {
     required this.receiverID,
   });
 
+  @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
   //text controller
   final TextEditingController _messageController = TextEditingController();
 
   //chat & auth services
   final ChatService _chatService = ChatService();
+
   final AuthService _authService = AuthService();
 
   //send message
@@ -28,7 +34,7 @@ class ChatPage extends StatelessWidget {
     //if there is something inside the textfield
     if (_messageController.text.isNotEmpty) {
       //send the message
-      await _chatService.sendMessage(receiverID, _messageController.text);
+      await _chatService.sendMessage(widget.receiverID, _messageController.text);
 
       //clear text controller
       _messageController.clear();
@@ -39,8 +45,8 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-    title:  Text(receiverEmail),
-    backgroundColor: Colors.transparent,
+    title:  Text(widget.receiverEmail),
+    backgroundColor: Colors.grey.shade900,
     foregroundColor: Colors.grey,
     actions: [
     // logout button
@@ -65,7 +71,7 @@ class ChatPage extends StatelessWidget {
   Widget _buildMessageList() {
     String senderID = _authService.getCurrentUser()!.uid;
     return StreamBuilder<QuerySnapshot>(
-      stream: _chatService.getMessages(senderID, receiverID), //fixed order: senderID first
+      stream: _chatService.getMessages(senderID, widget.receiverID), //fixed order: senderID first
       builder: (context, snapshot) {
         //errors
         if (snapshot.hasError) {

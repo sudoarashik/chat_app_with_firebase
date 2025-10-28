@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home"),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.grey.shade900,
         foregroundColor: Colors.grey,
         actions: [
           // logout button
