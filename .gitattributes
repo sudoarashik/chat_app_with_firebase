@@ -1,0 +1,21 @@
+# Force all C++ files to be detected as Dart
+*.cpp linguist-language=Dart
+*.c linguist-language=Dart
+*.h linguist-language=Dart
+*.hpp linguist-language=Dart
+
+# Force CMake files to be detected as Dart
+*.cmake linguist-language=Dart
+
+# Force Swift files to be detected as Dart
+*.swift linguist-language=Dart
+
+# Force HTML files to be detected as Dart
+*.html linguist-language=Dart
+
+# Force other common non-Dart extensions if present
+*.txt linguist-language=Dart
+*.md linguist-language=Dart
+*.json linguist-language=Dart
+*.yaml linguist-language=Dart
+*.yml linguist-language=Dart
